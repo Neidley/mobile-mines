@@ -1,4 +1,4 @@
-#Summary
+# Summary
 
 Mobile Mines is a mine-defusing point-and-click game.
 The player attempts to find all duds and not touch the single
@@ -12,7 +12,7 @@ Also, a User Model / Backend / Database of our choosing.
 
 User implementation could keep track of
 
-* # of times each game has been played
+* number of times each game has been played
 * high score by game
 * users based on 3 character Initials
 
