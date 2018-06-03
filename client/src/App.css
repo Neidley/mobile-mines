@@ -31,10 +31,18 @@
   }
 }
 
-.mine {
+#mine {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+}
+
+.mine:hover {
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 body {
