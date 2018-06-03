@@ -38,7 +38,8 @@ Redux
 (Redux has not yet been implemented. Redux is a popular companion to React to handle routing and dataflow to the backend)
 
 ////////////////////////////////////////////////
-// React README
+
+# React README
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
