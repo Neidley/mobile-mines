@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+//import Gameboard from './Gameboard';
 
 class Play extends Component {
   onClick(e) {
     e.preventDefault();
 
+    window.location.reload();
     console.log('Play initiated');
   }
 

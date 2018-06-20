@@ -4,6 +4,7 @@ class Restart extends Component {
   onClick(e) {
     e.preventDefault();
 
+    window.location.reload();
     console.log('Mines reset.');
   }
 
