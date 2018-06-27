@@ -3,28 +3,37 @@
 Mobile Mines is a mine-defusing point-and-click game.
 The player attempts to find all duds and not touch the single
 armed mine in the group.
-Touching the first mine, (if that is not the armed mine), should somehow indicate if an armed mine is adjacent.
 
 My ultimate goal is incorporate Mobile Mines and other simple
 mouse-click games into a virtual arcade cabinet.
 
-Also, a User Model / Backend / Database of our choosing.
+Also, a User Model / Backend / Database of our choosing could be implemented.
 
-User implementation could keep track of
+A User model implemented could keep track of:
 
 * number of times each game has been played
 * high score by game
-* users based on 3 character Initials
+* usernames based on 3 character Initials
 
 # Environment Setup
 
 Mobile Mines is a React front-end game.
 
-1.  download Node.js globally
+1.  Fork this repo
 
-2.  download Create-React-App globally
+2.  Clone `https://github.com/Neidley/mobile-mines.git`
 
-3.  Fork the repo and run locally on localhost:3000 server using
+3.  Install Node.js on your system.
+
+4.  cd into `/client` directory
+
+5.  Install dependencies
+
+```
+ npm install
+```
+
+6.  Start server on localhost:3000 with
 
 ```
  npm start

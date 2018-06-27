@@ -32,8 +32,8 @@
 }
 
 .mine {
-  height: 50px;
-  width: 50px;
+  height: 65px;
+  width: 65px;
   border-radius: 50%;
 }
 
@@ -48,6 +48,5 @@ button:hover {
 body {
   padding-top: 25px;
   background: url('../src/img/underwater.png') no-repeat;
-  background-position: bottom;
-  background-position: center;
+  background-size: 1280px 853px;
 }
