@@ -21,11 +21,11 @@ Mobile Mines is a React front-end game.
 
 1.  Fork this repo
 
-2.  Clone `https://github.com/Neidley/mobile-mines.git`
+2.  In your terminal, `git clone https://github.com/Neidley/mobile-mines.git`
 
 3.  Install Node.js on your system.
 
-4.  cd into `/client` directory
+4.  In your terminal, `cd client`
 
 5.  Install dependencies
 
@@ -45,6 +45,10 @@ React,
 Redux
 
 (Redux has not yet been implemented. Redux is a popular companion to React to handle routing and dataflow to the backend)
+
+5.  Enjoy Mobile Mines for a few turns.
+
+6.  in your terminal, `cd`
 
 ////////////////////////////////////////////////
 

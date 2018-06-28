@@ -12,7 +12,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to Mobile Mines</h1>
           <p className="App-intro">Good Luck.</p>
           <Play />
-          <Restart />
+          //<Restart />
         </header>
         <div className="container">
           <Gameboard />
