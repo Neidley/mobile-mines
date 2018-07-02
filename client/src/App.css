@@ -9,7 +9,7 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 175px;
   padding: 20px;
   color: white;
 }
@@ -27,19 +27,19 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(2160deg);
   }
 }
 
 .mine {
-  height: 65px;
-  width: 65px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
 }
 
 .mine:active {
-  height: 60px;
-  width: 60px;
+  height: 55px;
+  width: 55px;
   border-radius: 50%;
 }
 

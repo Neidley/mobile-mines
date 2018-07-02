@@ -65,35 +65,35 @@ class Gameboard extends Component {
         <div className="row">
           <div className="col-md-2">
             <img
-              className="mine"
+              className="mine App-logo"
               id="mine_1"
               onClick={this.onClick}
               src={mine}
               alt={'mine'}
             />
             <img
-              className="mine"
+              className="mine App-logo"
               id="mine_2"
               onClick={this.onClick}
               src={mine}
               alt={'mine'}
             />
             <img
-              className="mine"
+              className="mine App-logo"
               id="mine_3"
               onClick={this.onClick}
               src={mine}
               alt={'mine'}
             />
             <img
-              className="mine"
+              className="mine App-logo"
               id="mine_4"
               onClick={this.onClick}
               src={mine}
               alt={'mine'}
             />
             <img
-              className="mine"
+              className="mine App-logo"
               id="mine_5"
               onClick={this.onClick}
               src={mine}
