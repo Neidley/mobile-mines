@@ -4,6 +4,8 @@ Mobile Mines is a mine-defusing point-and-click game.
 The player attempts to find all duds and not touch the single
 armed mine in the group.
 
+[Try it out yourself](https://immense-fjord-38022.herokuapp.com/)
+
 My ultimate goal is incorporate Mobile Mines and other simple
 mouse-click games into a virtual arcade cabinet.
 
