@@ -37,8 +37,29 @@
   border-radius: 50%;
 }
 
+.mine:active {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
 .mine:hover {
   cursor: pointer;
+}
+
+.play {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  text-decoration-color: #000000;
+  text-size: 50px;
+  background-color: #509010;
+}
+
+.play:active {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
 }
 
 button:hover {

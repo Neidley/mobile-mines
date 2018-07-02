@@ -12,7 +12,9 @@ class Play extends Component {
   render() {
     return (
       <div className="container">
-        <button onClick={this.onClick}>PLAY</button>
+        <button className="play" onClick={this.onClick}>
+          PLAY
+        </button>
       </div>
     );
   }
