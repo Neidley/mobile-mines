@@ -24,13 +24,16 @@
 
 @keyframes App-logo-spin {
   from {
-    transform: rotate(45deg);
-  }
-  to {
     transform: rotate(-45deg);
   }
   to {
+    transform: rotate(0deg);
+  }
+  to {
     transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(45deg);
   }
 }
 
@@ -54,9 +57,9 @@
   height: 60px;
   width: 60px;
   border-radius: 50%;
-  text-decoration-color: #000000;
+  color: #ffffff;
   text-size: 50px;
-  background-color: #009999;
+  background: url('../src/img/underwater.png') no-repeat;
 }
 
 .play:active {

@@ -15,12 +15,24 @@ class Gameboard extends Component {
     let mine = e.target;
     let url = e.target.src;
 
-    // Checks if mine has already been clicked, if so return nil
+    // Checks if game has ended, if so return nil
+    if (
+      document.getElementsByClassName('App-intro')[0].innerText ===
+        'You Lose.' ||
+      document.getElementsByClassName('App-intro')[0].innerText === 'Victory!'
+    ) {
+      return;
+    }
+
+    // Checks if mine has already been clicked, if so updates message
     if (
       url === `http://localhost:3000${explosion}` ||
       url === `http://localhost:3000${whew}` ||
+      url === `http://localhost:3000${lookout}` ||
       document.getElementsByClassName('App-intro')[0].innerText === 'You Lose.'
     ) {
+      document.getElementsByClassName('App-intro')[0].innerText =
+        'Defuse another mine.';
       return;
     }
 
@@ -46,6 +58,7 @@ class Gameboard extends Component {
 
     if (mines_remaining === 0) {
       document.getElementsByClassName('App-intro')[0].innerText = 'Victory!';
+      console.log('you win');
     }
 
     /*
