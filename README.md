@@ -50,7 +50,12 @@ Redux
 
 5.  Enjoy Mobile Mines for a few turns.
 
-6.  in your terminal, `cd`
+6.  in your terminal, `cd ..`
+
+7.  `git checkout -b my-arcade-branch`
+
+8.  create your own `/client` directory,
+    copy the existing one and use what you like
 
 ////////////////////////////////////////////////
 
