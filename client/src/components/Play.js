@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { GameContext } from './Provider';
 //import Gameboard from './Gameboard';
 
 class Play extends Component {
-  onClick(e) {
+  onClick = (e) => {
     e.preventDefault();
 
-    window.location.reload();
+    this.props.resetGame()
     console.log('Play initiated');
   }
 
@@ -20,4 +21,9 @@ class Play extends Component {
   }
 }
 
-export default Play;
+export default () => (
+  <GameContext.Consumer>
+    {context => <Play resetGame={context.resetGame} />}
+  </GameContext.Consumer>
+);
+

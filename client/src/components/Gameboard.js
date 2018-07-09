@@ -1,64 +1,53 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import mine from '../img/mine.png';
-import explosion from '../img/explosion.png';
-import whew from '../img/whew.png';
-import lookout from '../img/lookout.png';
-
-const random_mine = `mine_${Math.floor(Math.random() * 5) + 1}`;
-let mines_remaining = 4;
+import { GameContext } from "./Provider";
+import Mine from "./Mine";
+import explosion from "../img/explosion.png";
+import whew from "../img/whew.png";
+import lookout from "../img/lookout.png";
 
 class Gameboard extends Component {
-  onClick(e) {
-    e.preventDefault();
+  onClick = ({ id, clicked }) => {
+    const {
+      endGame,
+      gameEnded,
+      minesRemaining,
+      randomMine,
+      stepOnMine,
+      updateMessage
+    } = this.props;
 
-    let mine = e.target;
-    let url = e.target.src;
-
-    // Checks if game has ended, if so return nil
-    if (
-      document.getElementsByClassName('App-intro')[0].innerText ===
-        'You Lose.' ||
-      document.getElementsByClassName('App-intro')[0].innerText === 'Victory!'
-    ) {
+    if (gameEnded) {
       return;
     }
 
     // Checks if mine has already been clicked, if so updates message
-    if (
-      url === `http://localhost:3000${explosion}` ||
-      url === `http://localhost:3000${whew}` ||
-      url === `http://localhost:3000${lookout}` ||
-      document.getElementsByClassName('App-intro')[0].innerText === 'You Lose.'
-    ) {
-      document.getElementsByClassName('App-intro')[0].innerText =
-        'Defuse another mine.';
+    if (clicked || gameEnded) {
+      updateMessage('Defuse another mine.');
       return;
     }
 
     // Determines if mine clicked is dud or explosive, referencing random_mine
-    if (mine.id === random_mine) {
-      console.log('BOOM!');
-      mine.src = explosion;
-      document.getElementsByClassName('App-intro')[0].innerText = 'You Lose.';
+    if (id === randomMine) {
+      console.log("BOOM!");
+      stepOnMine(id, explosion);
+      updateMessage('You Lose.');
+      endGame();
     } else if (
-      parseInt(mine.id.slice(-1), 10) + 1 ===
-        parseInt(random_mine.slice(-1), 10) ||
-      parseInt(mine.id.slice(-1), 10) - 1 ===
-        parseInt(random_mine.slice(-1), 10)
+      parseInt(id.slice(-1), 10) + 1 === parseInt(randomMine.slice(-1), 10) ||
+      parseInt(id.slice(-1), 10) - 1 === parseInt(randomMine.slice(-1), 10)
     ) {
-      console.log('LOOK OUT!');
-      mine.src = lookout;
-      mines_remaining -= 1;
+      console.log("LOOK OUT!");
+      stepOnMine(id, lookout);
     } else {
-      console.log('WHEW!');
-      mine.src = whew;
-      mines_remaining -= 1;
+      console.log("WHEW!");
+      stepOnMine(id, whew);
     }
 
-    if (mines_remaining === 0) {
-      document.getElementsByClassName('App-intro')[0].innerText = 'Victory!';
-      console.log('you win');
+    if (minesRemaining === 0) {
+      endGame();
+      updateMessage('Victory');
+      console.log("you win");
     }
 
     /*
@@ -70,53 +59,41 @@ class Gameboard extends Component {
     console.log(random_mine.slice(-1));
     console.log(mines_remaining);
     */
-  }
+  };
 
   render() {
+    const renderMines = this.props.mines.map(mine => {
+      return (
+        <Mine
+          id={mine.id}
+          clicked={mine.clicked}
+          src={mine.src}
+          onClick={this.onClick}
+        />
+      );
+    });
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-2">
-            <img
-              className="mine App-logo"
-              id="mine_1"
-              onClick={this.onClick}
-              src={mine}
-              alt={'mine'}
-            />
-            <img
-              className="mine App-logo"
-              id="mine_2"
-              onClick={this.onClick}
-              src={mine}
-              alt={'mine'}
-            />
-            <img
-              className="mine App-logo"
-              id="mine_3"
-              onClick={this.onClick}
-              src={mine}
-              alt={'mine'}
-            />
-            <img
-              className="mine App-logo"
-              id="mine_4"
-              onClick={this.onClick}
-              src={mine}
-              alt={'mine'}
-            />
-            <img
-              className="mine App-logo"
-              id="mine_5"
-              onClick={this.onClick}
-              src={mine}
-              alt={'mine'}
-            />
-          </div>
+          <div className="col-md-2">{renderMines}</div>
         </div>
       </div>
     );
   }
 }
 
-export default Gameboard;
+export default () => (
+  <GameContext.Consumer>
+    {context => (
+      <Gameboard
+        minesRemaining={context.minesRemaining}
+        endGame={context.endGame}
+        gameEnded={context.gameEnded}
+        stepOnMine={context.stepOnMine}
+        randomMine={context.randomMine}
+        mines={context.mines}
+        updateMessage={context.updateMessage}
+      />
+    )}
+  </GameContext.Consumer>
+);
