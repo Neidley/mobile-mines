@@ -55,7 +55,8 @@ Redux
 7.  `git checkout -b my-arcade-branch`
 
 8.  create your own `/client` directory,
-    copy the existing one and use what you like
+    copy the existing one and use what you like to create your own click-games
+    that we can encorporate into a virtual arcade cabinet (image coming soon)
 
 ////////////////////////////////////////////////
 
