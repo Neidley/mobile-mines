@@ -18,7 +18,7 @@ export default class Provider extends React.Component {
     resetGame: () => {
       this.setState({
         ...DEFAULT_STATE,
-        `mine_${Math.floor(Math.random() * 5) + 1}`
+        randomMine: `mine_${Math.floor(Math.random() * 5) + 1}`
       });
     },
     endGame: () => {
