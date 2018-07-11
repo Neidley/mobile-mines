@@ -16,7 +16,10 @@ export default class Provider extends React.Component {
   state = {
     ...DEFAULT_STATE,
     resetGame: () => {
-      this.setState(DEFAULT_STATE);
+      this.setState({
+        ...DEFAULT_STATE,
+        `mine_${Math.floor(Math.random() * 5) + 1}`
+      });
     },
     endGame: () => {
       this.setState({ gameEnded: true });

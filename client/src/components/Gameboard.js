@@ -65,6 +65,7 @@ class Gameboard extends Component {
     const renderMines = this.props.mines.map(mine => {
       return (
         <Mine
+          key={mine.id}
           id={mine.id}
           clicked={mine.clicked}
           src={mine.src}
