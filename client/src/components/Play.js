@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
 import { GameContext } from './Provider';
-import { DIFFICULTY_EASY, DIFFICULTY_MEDIUM, DIFFICULTY_HARD } from '../data/constants';
+import {
+  DIFFICULTY_EASY,
+  DIFFICULTY_MEDIUM,
+  DIFFICULTY_HARD
+} from '../data/constants';
 
 class Play extends Component {
   state = {
     difficulty: DIFFICULTY_EASY
-  }
-  onClick = (e) => {
+  };
+  onClick = e => {
     e.preventDefault();
 
-    this.props.resetGame(this.state.difficulty)
+    this.props.resetGame(this.state.difficulty);
     console.log('Play initiated');
-  }
+  };
 
   handleChange = event => {
     this.setState({ difficulty: event.target.value });
     this.props.updateDifficulty(event.target.value);
     this.props.resetGame(event.target.value);
-  }
+  };
 
   render() {
     return (
@@ -37,10 +41,11 @@ class Play extends Component {
 
 export default () => (
   <GameContext.Consumer>
-    {context => <Play 
-      resetGame={context.resetGame} 
-      updateDifficulty={context.updateDifficulty} 
-    />}
+    {context => (
+      <Play
+        resetGame={context.resetGame}
+        updateDifficulty={context.updateDifficulty}
+      />
+    )}
   </GameContext.Consumer>
 );
-

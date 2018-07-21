@@ -56,7 +56,7 @@
 .play {
   height: 60px;
   width: 60px;
-  border-radius: 50%;
+  border-radius: 10%;
   color: #ffffff;
   text-size: 50px;
   background: url('../src/img/underwater.png') no-repeat;
@@ -65,11 +65,21 @@
 .play:active {
   height: 55px;
   width: 55px;
-  border-radius: 50%;
+  border-radius: 10%;
 }
 
 button:hover {
   cursor: pointer;
+}
+
+select {
+  height: 60px;
+  width: 71px;
+  border-radius: 10%;
+  color: #ffffff;
+  text-size: 50px;
+  padding-left: 12px;
+  background: url('../src/img/underwater.png') no-repeat;
 }
 
 body {
