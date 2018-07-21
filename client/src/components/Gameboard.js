@@ -7,16 +7,17 @@ import whew from "../img/whew.png";
 import lookout from "../img/lookout.png";
 
 class Gameboard extends Component {
-  onClick = ({ id, clicked }) => {
+  onClick = ({ row, id, clicked }) => {
     const {
       endGame,
       gameEnded,
       minesRemaining,
-      randomMine,
+      randomMines,
       stepOnMine,
-      updateMessage
+      updateMessage,
     } = this.props;
 
+    const randomMine = randomMines[row];
     if (gameEnded) {
       return;
     }
@@ -30,7 +31,7 @@ class Gameboard extends Component {
     // Determines if mine clicked is dud or explosive, referencing random_mine
     if (id === randomMine) {
       console.log("BOOM!");
-      stepOnMine(id, explosion);
+      stepOnMine(row, id, explosion);
       updateMessage('You Lose.');
       endGame();
     } else if (
@@ -38,13 +39,13 @@ class Gameboard extends Component {
       parseInt(id.slice(-1), 10) - 1 === parseInt(randomMine.slice(-1), 10)
     ) {
       console.log("LOOK OUT!");
-      stepOnMine(id, lookout);
+      stepOnMine(row, id, lookout);
     } else {
       console.log("WHEW!");
-      stepOnMine(id, whew);
+      stepOnMine(row, id, whew);
     }
 
-    if (minesRemaining === 0) {
+    if (minesRemaining === 1) {
       endGame();
       updateMessage('Victory');
       console.log("you win");
@@ -62,22 +63,29 @@ class Gameboard extends Component {
   };
 
   render() {
-    const renderMines = this.props.mines.map(mine => {
+    const renderMines = this.props.mines.map((row, idx) => {
+      const rowOfMines = row.map(mine => {
+        return (  
+          <Mine
+            key={mine.id}
+            id={mine.id}
+            row={idx}
+            clicked={mine.clicked}
+            src={mine.src}
+            onClick={this.onClick}
+          />
+        );
+      })
       return (
-        <Mine
-          key={mine.id}
-          id={mine.id}
-          clicked={mine.clicked}
-          src={mine.src}
-          onClick={this.onClick}
-        />
+        <div key={idx} className="row">
+          <div className="col-md-2">{rowOfMines}</div>
+        </div>
       );
     });
+
     return (
       <div className="container">
-        <div className="row">
-          <div className="col-md-2">{renderMines}</div>
-        </div>
+      {renderMines}
       </div>
     );
   }
@@ -91,7 +99,7 @@ export default () => (
         endGame={context.endGame}
         gameEnded={context.gameEnded}
         stepOnMine={context.stepOnMine}
-        randomMine={context.randomMine}
+        randomMines={context.randomMines}
         mines={context.mines}
         updateMessage={context.updateMessage}
       />

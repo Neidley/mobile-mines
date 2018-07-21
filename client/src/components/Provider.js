@@ -1,13 +1,15 @@
 import React from "react";
 
-import mines from "../data/mines";
+import mines, { randomMines } from "../data/mines";
+import { DIFFICULTY_EASY } from '../data/constants';
 
 const DEFAULT_STATE = {
   message: "Good Luck",
-  minesRemaining: 4,
+  minesRemaining: DIFFICULTY_EASY * mines[0].length - DIFFICULTY_EASY,
   gameEnded: false,
-  randomMine: `mine_${Math.floor(Math.random() * 5) + 1}`,
-  mines
+  randomMines: randomMines(DIFFICULTY_EASY, mines[0].length),
+  mines: mines.slice(0,DIFFICULTY_EASY),
+  difficulty: DIFFICULTY_EASY,
 };
 
 export const GameContext = React.createContext();
@@ -15,22 +17,32 @@ export const GameContext = React.createContext();
 export default class Provider extends React.Component {
   state = {
     ...DEFAULT_STATE,
-    resetGame: () => {
+    resetGame: difficulty => {
       this.setState({
         ...DEFAULT_STATE,
-        randomMine: `mine_${Math.floor(Math.random() * 5) + 1}`
+        mines: mines.slice(0, difficulty),
+        minesRemaining: difficulty * mines[0].length - difficulty,
+        randomMines: randomMines(difficulty, mines[0].length),
+        difficulty: difficulty
       });
     },
     endGame: () => {
       this.setState({ gameEnded: true });
     },
-    stepOnMine: (id, src) => {
-      const newMines = this.state.mines.map(mine => {
-        if (mine.id === id) {
-          return { ...mine, clicked: true, src: src };
+    stepOnMine: (rowNumber, id, src) => {
+      const newMines = this.state.mines.map((row, idx) => {
+        if(idx === rowNumber){
+          return row.map(mine =>  {
+            if (mine.id === id) {
+              return { ...mine, clicked: true, src: src };
+            }
+            return mine;
+          });
         }
-        return mine;
-      });
+
+        return row;
+      })
+  
       this.setState({
         minesRemaining: this.state.minesRemaining - 1,
         mines: newMines
@@ -38,6 +50,9 @@ export default class Provider extends React.Component {
     },
     updateMessage: message => {
       this.setState({ message });
+    },
+    updateDifficulty: difficulty => {
+      this.setState({ difficulty: parseInt(difficulty, 10) });
     }
   };
 
