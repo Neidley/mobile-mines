@@ -3,7 +3,7 @@ import React from "react";
 class Mine extends React.Component {
   handleClick = e => {
     e.preventDefault();
-    this.props.onClick({ id: this.props.id, clicked: this.props.clicked });
+    this.props.onClick({ row: this.props.row, id: this.props.id, clicked: this.props.clicked });
   };
 
   render() {
