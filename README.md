@@ -25,7 +25,7 @@ Mobile Mines is a React front-end game.
 
 2.  In your terminal, `git clone https://github.com/Neidley/mobile-mines.git`
 
-3.  Install Node.js on your system.
+3.  [Install Node.js on your system.](https://nodejs.org/en/)
 
 4.  In your terminal, `cd client`
 
@@ -41,7 +41,7 @@ Mobile Mines is a React front-end game.
  npm start
 ```
 
-4.  Recommended google chrome extensions -
+4.  Recommended google chrome extensions for debugging -
 
 React,
 Redux
